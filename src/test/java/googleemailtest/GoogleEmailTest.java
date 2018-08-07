@@ -20,14 +20,14 @@ import static org.testng.Assert.*;
 
 @Test
 public class GoogleEmailTest {
+    private static final String login = "denismatveyevaleksandrovich@gmail.com";
+    private static final String password = "123qwe!@#QWE)";
 
     @FindBy
     private static WebDriver driver;
 
     @BeforeMethod
     public void setUp() {
-        String login = "denismatveyevaleksandrovich@gmail.com";
-        String password = "123qwe!@#QWE)";
         System.setProperty("webdriver.chrome.driver", "D:/chromedriver/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
