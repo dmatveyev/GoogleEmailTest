@@ -44,7 +44,7 @@ public class GoogleEmailTest {
         String subj = "Test email";
         String text = "Something text";
         MailInbox page = PageFactory.initElements(driver, MailInbox.class);
-        page.sendMessage(to,subj,text);
+        page.sendMessage(to, subj, text);
         String actual = page.getLinkTextForNewMessage();
         assertEquals(actual, "Просмотреть сообщение");
     }
