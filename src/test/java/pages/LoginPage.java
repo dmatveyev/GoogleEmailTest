@@ -4,13 +4,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class LoginPage {
 
-    private By identifierId = By.id("identifierId");
-    private By identifierNext = By.id("identifierNext");
-    private By passwordElement = By.name("password");
-    private By passwordNext = By.id("passwordNext");
+    @FindBy(id = "identifierId")
+    private WebElement identifierId;
+    @FindBy(id = "identifierNext")
+    private WebElement identifierNext;
+    @FindBy(name = "password")
+    private WebElement passwordElement;
+    @FindBy(id = "passwordNext")
+    private WebElement passwordNext;
 
     private WebDriver webDriver;
 
@@ -19,16 +24,15 @@ public class LoginPage {
     }
 
     public LoginPage enterLogin(String login) {
-        webDriver.findElement(identifierId).sendKeys(login);
-        webDriver.findElement(identifierNext).click();
+        identifierId.sendKeys(login);
+        identifierNext.click();
         return this;
     }
 
     public LoginPage enterPassword(String password) {
-        webDriver.findElement(passwordElement).sendKeys(password);
-        final WebElement myElement = webDriver.findElement(passwordNext);
+        passwordElement.sendKeys(password);
         final JavascriptExecutor jse = (JavascriptExecutor) webDriver;
-        jse.executeScript("arguments[0].click();", myElement);
+        jse.executeScript("arguments[0].click();", passwordNext);
         return this;
     }
 }
